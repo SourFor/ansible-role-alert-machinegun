@@ -1,5 +1,6 @@
 ---
 # defaults file for alert_machinegun
+alert_machinegun: true
 alert_machinegun_container_runtime: docker
 needed_packages:
   - openssl
