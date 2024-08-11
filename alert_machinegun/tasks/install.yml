@@ -7,6 +7,13 @@
   become: true
   loop: "{{ needed_packages }}"
 
+- name: Check container runtime
+  command: "{{ alert_machinegun_container_runtime }} --version"
+  register: container_runtime
+
+- name: Pulling image
+  ansible.builtin.command: "{{ alert_machinegun_container_runtime }} pull {{ alert_machinegun_image }}"
+
 # tasks file for alert_machinegun
 - name: Add the user '{{ alert_machinegun_user }}'
   ansible.builtin.user:
