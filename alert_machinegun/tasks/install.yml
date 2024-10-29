@@ -63,14 +63,14 @@
     mode: '0600'
 
 - name: Copy data files
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: "{{ item }}"
     dest: "{{ alert_machinegun_data_dir }}"
     owner: "{{ alert_machinegun_user }}"
     group: "{{ alert_machinegun_user }}"
     mode: '0600'
   with_fileglob:
-    - "data/*.json"
+    - "templates/data/*.json"
 
 - name: Configure systemd service
   ansible.builtin.template:
